@@ -77,11 +77,27 @@ class University(models.Model):
     image = models.ImageField(upload_to='univer_images')
     body = RichTextField()
     slug = models.SlugField()
+    tuition = models.BigIntegerField()
+    address = models.CharField(max_length=255)
 
     class Meta:
         ordering = ('-created',)
         verbose_name_plural = 'Universitetlar'
         verbose_name = 'Universitet'
-        
+
     def __str__(self):
         return self.qisqa_nomi
+
+
+class Comment(models.Model):
+    univer = models.ForeignKey(University, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=25)
+    email = models.EmailField()
+    comment = models.CharField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __str__(self):
+        return self.email
