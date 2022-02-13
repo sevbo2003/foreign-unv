@@ -69,7 +69,7 @@
                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-md-6">
-                                            {{ form }}
+                                            {{ comment_form }}
                                         </div>
                                     </div>
                                     <button class="btn btn-success mt-3" type="submit">Yuborish</button>
@@ -86,10 +86,10 @@
                     <aside class="sidebar">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h4 class="card-title">Qisqacha</h4>
-                                <p class="card-text">O'zingizga kerakli universitetni tanlang va ustiga bosish orqali
-                                    to'liq
-                                    malumot oling.
+                                <h3 class="card-title">Talablar</h3>
+                                <p class="card-text">{{ univer.requirements|safe }}
+                                <h3 class="card-title">Hujjatlar</h3>
+                                <p class="card-text">{{ univer.hujjatlar|safe }}
                                 </p>
                             </div>
                         </div>

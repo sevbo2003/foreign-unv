@@ -43,7 +43,7 @@ def university_detail(request, slug):
     categories = Category.objects.all()
     tags = Tags.objects.all()
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
@@ -58,12 +58,14 @@ def university_detail(request, slug):
             p.save()
             return redirect('detail', universitet.slug)
     else:
-        form = CommentForm()
+        comment_form = CommentForm()
+    form = EmailForm()
     context = {
         'univer': universitet,
         'sponsors': sponsors,
         'categories': categories,
         'tags': tags,
+        'comment_form': form,
         'form': form
     }
     return render(request, 'detail_page.html', context)
