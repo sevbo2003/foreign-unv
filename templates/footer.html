@@ -2,17 +2,18 @@
 <div class="site-newsletter">
     <div class="container">
         <div class="text-center">
-            <h3 class="h4 mb-2">Subscribe to our newsletter
+            <h3 class="h4 mb-2">Yangiliklardan xabardor bo'ling
             </h3>
-            <p class="text-muted">Join our monthly newsletter and never miss out on new stories and promotions.
-            </p>
+            <p class="text-muted">Pochta xabarnomasiga a'zo bo'lish orqali barcha yangiliklardan xabardor bo'lib borasiz.</p>
             <div class="row">
                 <div class="col-xs-12 col-sm-9 col-md-7 col-lg-5 ms-auto me-auto">
                     <div class="input-group mb-3 mt-3">
-                        <input type="text" class="form-control" placeholder="Email address" aria-label="Email address">
-                        <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Subscribe</button>
-                </span>
+                        <form action="{% url 'home' %}" method="post" class="d-flex">
+                            <input type="text" class="form-control" placeholder="Emailni kiriting"
+                                   aria-label="Email address">
+                            <span class="input-group-btn"><button class="btn btn-secondary w-auto"
+                                                                  type="submit">A'zo bo'lish</button></span>
+                        </form>
                     </div>
                 </div>
             </div>
