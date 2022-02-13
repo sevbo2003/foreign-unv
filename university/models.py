@@ -42,6 +42,7 @@ class University(models.Model):
     qisqa_nomi = models.CharField(max_length=7, null=True, blank=True)
     about = models.TextField()
     location = models.CharField(max_length=25)
+    author = models.ForeignKey(Author, on_delete=models.DO_NOTHING)
     davlat = models.ForeignKey(Davlat, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     tags = models.ManyToManyField(Tags)
