@@ -31,9 +31,8 @@
                         <a class="nav-link" href="page-contact.html">Aloqa</a>
                     </li>
                 </ul>
-                <form class="form-inline" role="search">
-                    <input class="search js-search form-control form-control-rounded me-sm-2" type="text"
-                           title="Enter search query here.." placeholder="Qidirish.." aria-label="Search">
+                <form class="form-inline" method="get" action="{% url 'home' %}">
+                    <input class="search js-search form-control form-control-rounded me-sm-2" type="text" name="search" placeholder="Qidirish..">
                 </form>
             </div>
         </div>
