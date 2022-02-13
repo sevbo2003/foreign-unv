@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local apps
     'university.apps.UniversityConfig',
+
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
