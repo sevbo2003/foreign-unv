@@ -4,6 +4,8 @@ from django.db.models import Q
 from django.core.mail import send_mail
 from marketing.forms import EmailForm
 from marketing.models import Subscribers
+from .forms import CommentForm
+from datetime import datetime
 
 
 def university_list(request):
@@ -37,7 +39,31 @@ def university_list(request):
 
 def university_detail(request, slug):
     universitet = get_object_or_404(University, slug=slug)
+    sponsors = University.objects.filter(sponsor=True)
+    categories = Category.objects.all()
+    tags = Tags.objects.all()
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            comment = form.cleaned_data['comment']
+            p = Comment(
+                name=name,
+                email=email,
+                comment=comment,
+                univer=universitet,
+                created=datetime.now()
+            )
+            p.save()
+            return redirect('detail', universitet.slug)
+    else:
+        form = CommentForm()
     context = {
         'univer': universitet,
+        'sponsors': sponsors,
+        'categories': categories,
+        'tags': tags,
+        'form': form
     }
     return render(request, 'detail_page.html', context)
