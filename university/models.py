@@ -5,12 +5,20 @@ from ckeditor.fields import RichTextField
 class Fanlar(models.Model):
     fan = models.CharField(max_length=25)
 
+    class Meta:
+        verbose_name_plural = 'Fanlar'
+        verbose_name = 'fan'
+
     def __str__(self):
         return self.fan
 
 
 class Davlat(models.Model):
     davlat = models.CharField(max_length=25)
+
+    class Meta:
+        verbose_name_plural = 'Davlat'
+        verbose_name = 'davlat'
 
     def __str__(self):
         return self.davlat
@@ -19,6 +27,10 @@ class Davlat(models.Model):
 class Category(models.Model):
     category = models.CharField(max_length=25)
 
+    class Meta:
+        verbose_name_plural = 'Categoriyalar'
+        verbose_name = 'category'
+
     def __str__(self):
         return self.category
 
@@ -26,12 +38,20 @@ class Category(models.Model):
 class Tags(models.Model):
     tag = models.CharField(max_length=25)
 
+    class Meta:
+        verbose_name_plural = 'Tags'
+        verbose_name = 'tag'
+
     def __str__(self):
         return self.tag
 
 
 class Author(models.Model):
     name = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name_plural = 'Authorlar'
+        verbose_name = 'author'
 
     def __str__(self):
         return self.name
@@ -56,9 +76,12 @@ class University(models.Model):
     updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='univer_images')
     body = RichTextField()
+    slug = models.SlugField()
 
     class Meta:
         ordering = ('-created',)
-
+        verbose_name_plural = 'Universitetlar'
+        verbose_name = 'Universitet'
+        
     def __str__(self):
         return self.qisqa_nomi
