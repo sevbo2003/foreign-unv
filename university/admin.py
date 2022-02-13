@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Davlat, Category, Tags, Author, Fanlar, University
+from .models import Davlat, Category, Tags, Author, Fanlar, University, Comment
 
 admin.site.register(Davlat)
 admin.site.register(Category)
+admin.site.register(Comment)
 admin.site.register(Tags)
 admin.site.register(Author)
 admin.site.register(Fanlar)
