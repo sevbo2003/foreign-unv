@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from marketing.models import Subscribers
 
 
 class Fanlar(models.Model):

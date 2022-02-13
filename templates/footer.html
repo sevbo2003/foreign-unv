@@ -9,8 +9,8 @@
                 <div class="col-xs-12 col-sm-9 col-md-7 col-lg-5 ms-auto me-auto">
                     <div class="input-group mb-3 mt-3">
                         <form action="{% url 'home' %}" method="post" class="d-flex">
-                            <input type="text" class="form-control" placeholder="Emailni kiriting"
-                                   aria-label="Email address">
+                            {% csrf_token %}
+                            {{ form }}
                             <span class="input-group-btn"><button class="btn btn-secondary w-auto"
                                                                   type="submit">A'zo bo'lish</button></span>
                         </form>
