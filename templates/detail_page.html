@@ -2,248 +2,153 @@
 {% load static %}
 {% block content %}
 
-<main class="main pt-4">
+    <main class="main pt-4">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="row">
-            <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-9">
 
-                <article class="card mb-4">
-                    <header class="card-header text-center">
-                        <div class="entry-meta d-flex justify-content-center">
-                            <ul class="entry-meta d-flex justify-content-center">
-                              <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/">Abdusamad</a></li>
-                              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/">Feb 13, 2022</a></li>
-                              <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/">12 Comments</a></li>
-                            </ul>
-                        </div>
+                    <article class="card mb-4">
+                        <header class="card-header text-center">
+                            <div class="entry-meta d-flex justify-content-center">
+                                <ul class="entry-meta d-flex justify-content-center">
+                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                                            href="/">{{ univer.author }}</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
+                                            href="/">{{ univer.created|date:'M d, 20y' }}</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
+                                            href="/">{{ univer.comments.all.count }} ta izoh</a></li>
+                                </ul>
+                            </div>
+                            <a href="detail_page.html">
+                                <h1 class="card-title">{{ univer.university }}</h1>
+                            </a>
+                        </header>
                         <a href="detail_page.html">
-                            <h1 class="card-title">How can we sing about love?</h1>
+                            <img class="card-img" src="{{ univer.image.url }}" alt="sd"/>
                         </a>
-                    </header>
-                    <a href="detail_page.html">
-                        <img class="card-img" src="../static/img/articles/2.jpg" alt=""/>
-                    </a>
-                    
-                    <div class="card-body">
-                        <div class="entry-footer">
-                            <i class="bi bi-folder"></i>
-                            <ul class="cats">
-                              <li><a href="#">Business</a></li>
-                            </ul>
-            
-                            <i class="bi bi-tags"></i>
-                            <ul class="tags">
-                              <li><a href="#">Creative</a></li>
-                              <li><a href="#">Tips</a></li>
-                              <li><a href="#">Marketing</a></li>
-                            </ul>
-                        </div>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque <a href="#">penatibus</a> et magnis dis parturient montes,
-                            nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, <strong>pretium
-                                quis, sem.</strong></p>
 
-                        <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate
-                            eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
-                            felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper
-                            nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
-                            eleifend ac, enim.</p>
+                        <div class="card-body">
+                            <div class="entry-footer">
+                                <i class="bi bi-folder"></i>
+                                <ul class="cats">
+                                    <li><a href="#">{{ univer.category }}</a></li>
+                                </ul>
 
-                        <p><strong>Aliquam lorem ante</strong>, dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                            viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies
-                            nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. <strong>Etiam
-                                rhoncus</strong>. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper
-                            libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus
-                            pulvinar, hendrerit id, lorem. Maecenas nec odio et ante <a href="#">tincidunt tempus</a>.
-                        </p>
-
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        </blockquote>
-
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, <a href="#">nascetur
-                                ridiculus</a> mus. Donec quam felis, ultricies nec, pellentesque eu, <strong>pretium
-                                quis, sem.</strong></p>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <ul>
-                                    <li>Donec quam felis</li>
-                                    <li>Consectetuer adipiscing</li>
+                                <i class="bi bi-tags"></i>
+                                <ul class="tags">
+                                    {% for tag in univer.tags.all %}
+                                        <li><a href="#">{{ tag|capfirst }}</a></li>
+                                    {% endfor %}
                                 </ul>
                             </div>
-                            <div class="col-md-4">
-                                <ul>
-                                    <li>Donec quam felis</li>
-                                    <li>Consectetuer adipiscing</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4">
-                                <ul>
-                                    <li>Donec quam felis</li>
-                                    <li>Consectetuer adipiscing</li>
-                                </ul>
-                            </div>
-                        </div>
+                            <br>
+                            <p>{{ univer.body|safe }}</p>
 
-                        <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut
-                            metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-                            Curabitur ullamcorper ultricies nisi. Nam eget dui. <strong>Etiam rhoncus</strong>. Maecenas
-                            tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem
-                            neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                            nec odio et ante <a href="#">tincidunt tempus</a>.</p>
-
-                        <hr/>
-
-                        <h3>4 comments</h3>
-
-                        <div class="d-flex mb-3 p-3 bg-light">
-                            <div class="text-center">
-                                <img class="me-3 rounded-circle" src="../static/img/avatars/3.png" alt="Lucy" width="100"
-                                     height="100">
-                                <h6 class="mt-1 mb-0 me-3">Lucy</h6>
-                            </div>
-                            <div class="flex-grow-1 d-block">
-                                <p class="mt-3 mb-2">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                    viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-                                    congue felis in faucibus.</p>
-                                <time class="timeago text-muted" datetime="2021-09-03 20:00">3 december 2021</time>
-                                <a class="float-end" href="#"><span class="fa fa-reply"></span> Reply</a>
-
-                                <div class="d-flex mt-3 p-0">
-                                    <div class="pe-3 text-center">
-                                        <img class="me-3 rounded-circle" src="../static/img/avatars/2.png" alt="John" width="100"
-                                             height="100">
-                                        <h6 class="mt-1 mb-0 me-3">John</h6>
+                            <hr/>
+                            {% if univer.comments.all.count == 0 %}
+                                <h3 class="text-body">Hali izohlar yoq. Birinchilardan bo'lib izoh qoldiring</h3>
+                            {% else %}
+                                <h3 class="text-body">{{ univer.comments.all.count }} ta izoh</h3>
+                            {% endif %}
+                            {% for comment in univer.comments.all %}
+                                <div class="d-flex mb-3 p-3 bg-light">
+                                    <div class="text-center">
+                                        <img class=" rounded-circle"
+                                             src="https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png"
+                                             alt="img"
+                                             width="150">
+                                        <h6 class="mt-1 mb-0 me-3">{{ comment.name }}</h6>
                                     </div>
                                     <div class="flex-grow-1">
-                                        <p class="mt-3 mb-2">Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                            odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
-                                            nunc ac nisi vulputate fringilla. Donec lacinia congue felis in
-                                            faucibus.</p>
-                                        <time class="timeago text-muted" datetime="2021-09-14 19:00">14 december 2021
-                                        </time>
-                                        <a class="float-end" href="#"><span class="fa fa-reply"></span> Reply</a>
+                                        <p class="mt-3 mb-2">{{ comment.comment }}</p>
+                                        <time class="timeago text-muted">{{ comment.created|date:'d M, 20y | H:i' }}</time>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            {% endfor %}
 
-                        <div class="d-flex mb-3 p-3 bg-light">
-                            <div class="text-center">
-                                <img class="me-3 rounded-circle" src="../static/img/avatars/1.png" alt="Kim" width="100"
-                                     height="100">
-                                <h6 class="mt-1 mb-0 me-3">Kim</h6>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="mt-3 mb-2">Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et
-                                    nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id,
-                                    imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem
-                                    in justo pellentesque facilisis.</p>
-                                <time class="timeago text-muted" datetime="2021-09-20 20:00">20 november 2021</time>
-                                <a class="float-end" href="#"><span class="fa fa-reply"></span> Reply</a>
-                            </div>
-                        </div>
 
-                        <div class="d-flex mb-3 p-3 bg-light">
-                            <div class="text-center">
-                                <img class="me-3 rounded-circle" src="../static/img/avatars/4.png" alt="Paula" width="100"
-                                     height="100">
-                                <h6 class="mt-1 mb-0 me-3">Paula</h6>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="mt-3 mb-2">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget,
-                                    imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante
-                                    arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing.
-                                    Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus.</p>
-                                <time class="timeago text-muted" datetime="2021-09-05 20:00">5 november 2021</time>
-                                <a class="float-end" href="#"><span class="fa fa-reply"></span> Reply</a>
-                            </div>
-                        </div>
-
-                        <div class="mt-5">
-                            <h5>Write a response</h5>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" id="name" name="name"
-                                           placeholder="Your name">
+                            <div class="mt-5">
+                                <h5>Write a response</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="name" name="name"
+                                               placeholder="Your name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               placeholder="Your email">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" id="email" name="email"
-                                           placeholder="Your email">
-                                </div>
+                                <textarea class="form-control mt-3" rows="3"
+                                          placeholder="Write a response.."></textarea>
+                                <a href="#" class="btn btn-success mt-3">Publish</a>
                             </div>
-                            <textarea class="form-control mt-3" rows="3" placeholder="Write a response.."></textarea>
-                            <a href="#" class="btn btn-success mt-3">Publish</a>
-                        </div>
-
-                    </div>
-                </article><!-- /.card -->
-
-            </div>
-            <div class="col-md-3 ms-auto">
-                <aside class="sidebar mt-3">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h4 class="card-title">About
-                            </h4>
-                            <p class="card-text">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem
-                                quam
-                                <a href="#">semper libero
-                                </a>, sit amet adipiscing sem neque sed ipsum.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </aside>
-
-                <aside class="sidebar sidebar-sticky">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h4 class="card-title">Categories</h4>
-                            <a class="btn btn-light btn-sm mb-1" href="page-category.html">Journey</a>
-                            <a class="btn btn-light btn-sm mb-1" href="page-category.html">Work</a>
-                            <a class="btn btn-light btn-sm mb-1" href="page-category.html">Lifestype</a>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Tags</h4>
-                            <a class="btn btn-light btn-sm mb-1" href="page-category.html">Journey</a>
-                            <a class="btn btn-light btn-sm mb-1" href="page-category.html">Work</a>
-                            <a class="btn btn-light btn-sm mb-1" href="page-category.html">Lifestype</a>
-                            <a class="btn btn-light btn-sm mb-1" href="page-category.html">Photography</a>
-                            <a class="btn btn-light btn-sm mb-1" href="page-category.html">Food & Drinks</a>
-                        </div>
-                    </div><!-- /.card -->
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h4 class="card-title">Popular stories</h4>
-
-                            <a href="detail_page.html" class="d-inline-block">
-                                <h4 class="h6">The blind man</h4>
-                                <img class="card-img" src="../static/img/articles/2.jpg" alt=""/>
-                            </a>
-                            <time class="timeago" datetime="2021-09-03 20:00">3 october 2021</time>
-                            in Lifestyle
-
-                            <a href="detail_page.html" class="d-inline-block mt-3">
-                                <h4 class="h6">Crying on the news</h4>
-                                <img class="card-img" src="../static/img/articles/3.jpg" alt=""/>
-                            </a>
-                            <time class="timeago" datetime="2021-07-16 20:00">16 july 2021</time>
-                            in Work
 
                         </div>
-                    </div><!-- /.card -->
-                </aside>
+                    </article><!-- /.card -->
 
+                </div>
+                <div class="col-md-3 ms-auto">
+                    <aside class="sidebar mt-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">About
+                                </h4>
+                                <p class="card-text">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
+                                    sem
+                                    quam
+                                    <a href="#">semper libero
+                                    </a>, sit amet adipiscing sem neque sed ipsum.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </aside>
+
+                    <aside class="sidebar sidebar-sticky">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">Categories</h4>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Journey</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Work</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Lifestype</a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Tags</h4>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Journey</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Work</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Lifestype</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Photography</a>
+                                <a class="btn btn-light btn-sm mb-1" href="page-category.html">Food & Drinks</a>
+                            </div>
+                        </div><!-- /.card -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">Popular stories</h4>
+
+                                <a href="detail_page.html" class="d-inline-block">
+                                    <h4 class="h6">The blind man</h4>
+                                    <img class="card-img" src="../static/img/articles/2.jpg" alt=""/>
+                                </a>
+                                <time class="timeago" datetime="2021-09-03 20:00">3 october 2021</time>
+                                in Lifestyle
+
+                                <a href="detail_page.html" class="d-inline-block mt-3">
+                                    <h4 class="h6">Crying on the news</h4>
+                                    <img class="card-img" src="../static/img/articles/3.jpg" alt=""/>
+                                </a>
+                                <time class="timeago" datetime="2021-07-16 20:00">16 july 2021</time>
+                                in Work
+
+                            </div>
+                        </div><!-- /.card -->
+                    </aside>
+
+                </div>
             </div>
         </div>
-    </div>
 
-</main>
+    </main>
 {% endblock %}

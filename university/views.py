@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import University, Category, Tags
+from .models import University, Category, Tags, Comment
 from django.db.models import Q
 from django.core.mail import send_mail
 from marketing.forms import EmailForm
@@ -33,3 +33,11 @@ def university_list(request):
         'form': form
     }
     return render(request, 'home.html', context)
+
+
+def university_detail(request, slug):
+    universitet = get_object_or_404(University, slug=slug)
+    context = {
+        'univer': universitet,
+    }
+    return render(request, 'detail_page.html', context)

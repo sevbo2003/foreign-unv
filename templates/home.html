@@ -21,27 +21,27 @@
                     {% for univer in univers %}
                         <article class="card mb-4">
                             <header class="card-header">
-                                <a href="detail_page.html">
+                                <a href="{% url 'detail' univer.slug %}">
                                     <h4 class="card-title">{{ univer.universitet }}</h4>
                                 </a>
                                 <div class="entry-meta">
                                     <ul>
                                         <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                href="/">{{ univer.author }}</a></li>
+                                                href="{% url 'detail' univer.slug %}">{{ univer.author }}</a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                href="/">{{ univer.created|timesince }} oldin</a></li>
+                                                href="{% url 'detail' univer.slug %}">{{ univer.created|timesince }} oldin</a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                href="/">{{ univer.comments.all.count }} ta comment</a></li>
+                                                href="{% url 'detail' univer.slug %}">{{ univer.comments.all.count }} ta comment</a></li>
                                     </ul>
                                 </div>
                             </header>
-                            <a href="detail_page.html">
+                            <a href="{% url 'detail' univer.slug %}">
                                 <img class="card-img" src="{{ univer.image.url }}" alt="No"/>
                             </a>
                             <div class="card-body">
                                 <p class="card-text">{{ univer.about }}
                                 </p>
-                                <button class="btn btn-outline-info w-25"><a href="/">Batafsil o'qish</a></button>
+                                <button class="btn btn-outline-info w-25"><a href="{% url 'detail' univer.slug %}">Batafsil o'qish</a></button>
 
                             </div>
                         </article>
@@ -84,7 +84,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Sponsorlar</h4>
                                 {% for sponsor in sponsors %}
-                                    <a href="detail_page.html" class="d-inline-block">
+                                    <a href="{% url 'detail' sponsor.slug %}" class="d-inline-block">
                                         <img class="card-img" src="{{ sponsor.image.url }}" alt="No"/>
                                         <p class="card-text">{{ sponsor.universitet }}</p>
                                     </a>
