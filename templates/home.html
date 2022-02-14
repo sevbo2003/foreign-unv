@@ -25,11 +25,11 @@
                                     <h4 class="card-title">{{ univer.universitet }}</h4>
                                 </a>
                                 <div class="entry-meta">
-                                    <ul>
+                                    <ul class="d-flex">
                                         <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
                                                 href="{% url 'detail' univer.slug %}">{{ univer.author }}</a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                href="{% url 'detail' univer.slug %}">{{ univer.created|timesince }} oldin</a></li>
+                                                href="{% url 'detail' univer.slug %}">{{ univer.created|date:'M d, 20y' }} oldin</a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
                                                 href="{% url 'detail' univer.slug %}">{{ univer.comments.all.count }} ta comment</a></li>
                                     </ul>
@@ -41,7 +41,7 @@
                             <div class="card-body">
                                 <p class="card-text">{{ univer.about }}
                                 </p>
-                                <button class="btn btn-outline-info w-25"><a href="{% url 'detail' univer.slug %}">Batafsil o'qish</a></button>
+                                <button class="btn btn-outline-info"><a href="{% url 'detail' univer.slug %}">Batafsil o'qish</a></button>
 
                             </div>
                         </article>
@@ -82,7 +82,7 @@
                         <!-- /.card -->
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h4 class="card-title">Sponsorlar</h4>
+                                <h4 class="card-title">Homiylar</h4>
                                 {% for sponsor in sponsors %}
                                     <a href="{% url 'detail' sponsor.slug %}" class="d-inline-block">
                                         <img class="card-img" src="{{ sponsor.image.url }}" alt="No"/>

@@ -65,7 +65,7 @@ def university_detail(request, slug):
         'sponsors': sponsors,
         'categories': categories,
         'tags': tags,
-        'comment_form': form,
+        'comment_form': comment_form,
         'form': form
     }
     return render(request, 'detail_page.html', context)

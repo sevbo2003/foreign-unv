@@ -69,7 +69,7 @@
                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-md-6">
-                                            {{ comment_form }}
+                                            {{ comment_form.as_p }}
                                         </div>
                                     </div>
                                     <button class="btn btn-success mt-3" type="submit">Yuborish</button>
@@ -114,7 +114,7 @@
                         <!-- /.card -->
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h4 class="card-title">Sponsorlar</h4>
+                                <h4 class="card-title">Homiylar</h4>
                                 {% for sponsor in sponsors %}
                                     <a href="{% url 'detail' sponsor.slug %}" class="d-inline-block">
                                         <img class="card-img" src="{{ sponsor.image.url }}" alt="No"/>
