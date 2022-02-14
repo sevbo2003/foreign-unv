@@ -29,9 +29,11 @@
                                         <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
                                                 href="{% url 'detail' univer.slug %}">{{ univer.author }}</a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                href="{% url 'detail' univer.slug %}">{{ univer.created|date:'M d, 20y' }} oldin</a></li>
+                                                href="{% url 'detail' univer.slug %}">{{ univer.created|date:'M d, 20y' }}
+                                            oldin</a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                href="{% url 'detail' univer.slug %}">{{ univer.comments.all.count }} ta comment</a></li>
+                                                href="{% url 'detail' univer.slug %}">{{ univer.comments.all.count }} ta
+                                            comment</a></li>
                                     </ul>
                                 </div>
                             </header>
@@ -41,7 +43,8 @@
                             <div class="card-body">
                                 <p class="card-text">{{ univer.about }}
                                 </p>
-                                <button class="btn btn-outline-info"><a href="{% url 'detail' univer.slug %}">Batafsil o'qish</a></button>
+                                <button class="btn btn-outline-info"><a href="{% url 'detail' univer.slug %}">Batafsil
+                                    o'qish</a></button>
 
                             </div>
                         </article>

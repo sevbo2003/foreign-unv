@@ -44,10 +44,10 @@ def university_detail(request, slug):
     tags = Tags.objects.all()
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            comment = form.cleaned_data['comment']
+        if comment_form.is_valid():
+            name = comment_form.cleaned_data['name']
+            email = comment_form.cleaned_data['email']
+            comment = comment_form.cleaned_data['comment']
             p = Comment(
                 name=name,
                 email=email,

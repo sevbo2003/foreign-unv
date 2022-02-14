@@ -65,7 +65,7 @@
 
                             <div class="mt-5">
                                 <h5>Izoh qoldiring</h5>
-                                <form method="post">
+                                <form method="post" action="{% url 'detail' univer.slug %}">
                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-md-6">
