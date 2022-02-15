@@ -28,14 +28,11 @@ def university_list(request):
             # redirect('home')
     else:
         form = EmailForm()
-    sponsors = University.objects.filter(sponsor=True)
-    categories = Category.objects.all()
-    tags = Tags.objects.all()
+    # sponsors = University.objects.filter(sponsor=True)
+    # categories = Category.objects.all()
+    # tags = Tags.objects.all()
     context = {
         'univers': universities,
-        'sponsors': sponsors,
-        'categories': categories,
-        'tags': tags,
         'form': form
     }
     return render(request, 'home.html', context)
@@ -43,9 +40,6 @@ def university_list(request):
 
 def university_detail(request, slug):
     universitet = get_object_or_404(University, slug=slug)
-    sponsors = University.objects.filter(sponsor=True)
-    categories = Category.objects.all()
-    tags = Tags.objects.all()
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
@@ -66,9 +60,6 @@ def university_detail(request, slug):
     form = EmailForm()
     context = {
         'univer': universitet,
-        'sponsors': sponsors,
-        'categories': categories,
-        'tags': tags,
         'comment_form': comment_form,
         'form': form
     }
@@ -78,15 +69,9 @@ def university_detail(request, slug):
 def category_list(request, pk, category):
     category = get_object_or_404(Category, id=pk, category=category)
     univer_with_cat = University.objects.filter(category=category)
-    sponsors = University.objects.filter(sponsor=True)
-    categories = Category.objects.all()
-    tags = Tags.objects.all()
     form = EmailForm()
     context = {
         'cats': univer_with_cat,
-        'sponsors': sponsors,
-        'categories': categories,
-        'tags': tags,
         'form': form
     }
     return render(request, 'cats.html', context)
@@ -95,15 +80,17 @@ def category_list(request, pk, category):
 def tag_list(request, pk, tag):
     tag = get_object_or_404(Tags, id=pk, tag=tag)
     univer_with_tag = University.objects.filter(tags=tag)
-    sponsors = University.objects.filter(sponsor=True)
-    categories = Category.objects.all()
-    tags = Tags.objects.all()
     form = EmailForm()
     context = {
         'tags_u': univer_with_tag,
-        'sponsors': sponsors,
-        'categories': categories,
-        'tags': tags,
         'form': form
     }
     return render(request, 'tags.html', context)
+
+
+def page_contact(request):
+    return render(request, 'page-contact.html')
+
+
+def page_about(request):
+    return render(request, 'page-about.html')
