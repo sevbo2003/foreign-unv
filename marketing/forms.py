@@ -11,5 +11,5 @@ class EmailForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': "Emailni kiriting",
         'type': 'text',
-
+        'aria-label': "Email address"
     }), label='')

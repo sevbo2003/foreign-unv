@@ -12,8 +12,8 @@
                         <form action="{% url 'home' %}" method="post" class="d-flex">
                             {% csrf_token %}
                             {{ form }}
-                            <span class="input-group-btn"><button class="btn btn-secondary w-auto"
-                                                                  type="submit">A'zo bo'lish</button></span>
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Qo'shilish</button></span>
                         </form>
                     </div>
                     {% if messages %}
