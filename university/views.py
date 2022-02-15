@@ -7,6 +7,7 @@ from marketing.models import Subscribers
 from .forms import CommentForm
 from datetime import datetime
 from django.contrib import messages
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def university_list(request):
@@ -16,11 +17,19 @@ def university_list(request):
             Q(universitet__icontains=search_univer) & Q(about__icontains=search_univer))
     else:
         universities = University.objects.all()
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(universities, 3)
+    try:
+        universities = paginator.page(page_num)
+    except PageNotAnInteger:
+        universities = paginator.page(1)
+    except EmptyPage:
+        universities = paginator.page(paginator.num_pages)
     if request.method == 'POST':
         form = EmailForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            if email not in [i.email for i in Subscribers.objects.all()]:
+            if Subscribers.objects.filter(email=email).exists() == False:
                 p = Subscribers(email=email)
                 print(email)
                 p.save()
