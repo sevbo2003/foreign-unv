@@ -20,11 +20,15 @@ def university_list(request):
         form = EmailForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            p = Subscribers(email=email)
-            p.save()
-            send_mail('Xush kelibsiz', 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz. Rahmat :)',
-                      'sevbofx@gmail.com', (email,))
-            messages.success(request, 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz.')
+            if email not in [i.email for i in Subscribers.objects.all()]:
+                p = Subscribers(email=email)
+                print(email)
+                p.save()
+                send_mail('Xush kelibsiz', 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz. Rahmat :)',
+                          'sevbofx@gmail.com', (email,))
+                messages.success(request, 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz.')
+            else:
+                messages.success(request, "Siz allaqachon a'zo bo'lgansiz!")
     else:
         form = EmailForm()
     context = {
