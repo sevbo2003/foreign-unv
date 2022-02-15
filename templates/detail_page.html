@@ -82,50 +82,8 @@
                     </article><!-- /.card -->
 
                 </div>
-                <div class="col-md-3 ms-auto">
-                    <aside class="sidebar">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h3 class="card-title">Talablar</h3>
-                                <p class="card-text">{{ univer.requirements|safe }}
-                                <h3 class="card-title">Hujjatlar</h3>
-                                <p class="card-text">{{ univer.hujjatlar|safe }}
-                                </p>
-                            </div>
-                        </div>
-                        <!-- /.card -->
-                    </aside>
-                    <aside class="sidebar sidebar-sticky">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h4 class="card-title">Kategoriyalar</h4>
-                                {% for cat in categories %}
-                                    <a class="btn btn-light btn-sm mb-1"
-                                       href="{% url 'cat_list' cat.id cat.category %}">{{ cat.category }}</a>
-                                {% endfor %}
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Teglar</h4>
-                                {% for tag in tags %}
-                                    <a class="btn btn-light btn-sm mb-1" href="{% url 'tag_list' tag.id tag.tag %}">{{ tag.tag }}</a>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <!-- /.card -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h4 class="card-title">Homiylar</h4>
-                                {% for sponsor in sponsors %}
-                                    <a href="{% url 'detail' sponsor.slug %}" class="d-inline-block">
-                                        <img class="card-img" src="{{ sponsor.image.url }}" alt="No"/>
-                                        <p class="card-text">{{ sponsor.universitet }}</p>
-                                    </a>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <!-- /.card -->
-                    </aside>
-                </div>
+                {% include 'sidebar.html' %}
+
             </div>
         </div>
 

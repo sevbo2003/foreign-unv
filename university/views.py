@@ -25,12 +25,8 @@ def university_list(request):
             send_mail('Xush kelibsiz', 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz. Rahmat :)',
                       'sevbofx@gmail.com', (email,))
             messages.success(request, 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz.')
-            # redirect('home')
     else:
         form = EmailForm()
-    # sponsors = University.objects.filter(sponsor=True)
-    # categories = Category.objects.all()
-    # tags = Tags.objects.all()
     context = {
         'univers': universities,
         'form': form
