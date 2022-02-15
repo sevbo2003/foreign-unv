@@ -6,12 +6,14 @@ from marketing.forms import EmailForm
 from marketing.models import Subscribers
 from .forms import CommentForm
 from datetime import datetime
+from django.contrib import messages
 
 
 def university_list(request):
     search_univer = request.GET.get('search')
     if search_univer:
-        universities = University.objects.filter(Q(universitet__icontains=search_univer) & Q(about__icontains=search_univer))
+        universities = University.objects.filter(
+            Q(universitet__icontains=search_univer) & Q(about__icontains=search_univer))
     else:
         universities = University.objects.all()
     if request.method == 'POST':
@@ -20,8 +22,10 @@ def university_list(request):
             email = form.cleaned_data['email']
             p = Subscribers(email=email)
             p.save()
-            send_mail('Xush kelibsiz', 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz. Rahmat :)', 'sevbofx@gmail.com', (email,))
-            redirect('home')
+            send_mail('Xush kelibsiz', 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz. Rahmat :)',
+                      'sevbofx@gmail.com', (email,))
+            messages.success(request, 'Siz email xabarnomaga muvaffaqiyatli a\'zo bo\'ldingiz.')
+            # redirect('home')
     else:
         form = EmailForm()
     sponsors = University.objects.filter(sponsor=True)
@@ -69,3 +73,37 @@ def university_detail(request, slug):
         'form': form
     }
     return render(request, 'detail_page.html', context)
+
+
+def category_list(request, pk, category):
+    category = get_object_or_404(Category, id=pk, category=category)
+    univer_with_cat = University.objects.filter(category=category)
+    sponsors = University.objects.filter(sponsor=True)
+    categories = Category.objects.all()
+    tags = Tags.objects.all()
+    form = EmailForm()
+    context = {
+        'cats': univer_with_cat,
+        'sponsors': sponsors,
+        'categories': categories,
+        'tags': tags,
+        'form': form
+    }
+    return render(request, 'cats.html', context)
+
+
+def tag_list(request, pk, tag):
+    tag = get_object_or_404(Tags, id=pk, tag=tag)
+    univer_with_tag = University.objects.filter(tags=tag)
+    sponsors = University.objects.filter(sponsor=True)
+    categories = Category.objects.all()
+    tags = Tags.objects.all()
+    form = EmailForm()
+    context = {
+        'tags_u': univer_with_tag,
+        'sponsors': sponsors,
+        'categories': categories,
+        'tags': tags,
+        'form': form
+    }
+    return render(request, 'tags.html', context)

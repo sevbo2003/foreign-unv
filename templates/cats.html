@@ -18,7 +18,7 @@
                 <div class="col-md-9">
                     {#  card  #}
 
-                    {% for univer in univers %}
+                    {% for univer in cats %}
                         <article class="card mb-4">
                             <header class="card-header">
                                 <a href="{% url 'detail' univer.slug %}">
@@ -78,7 +78,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Teglar</h4>
                                 {% for tag in tags %}
-                                    <a class="btn btn-light btn-sm mb-1" href="{% url 'tag_list' tag.id tag %}">{{ tag.tag }}</a>
+                                    <a class="btn btn-light btn-sm mb-1" href="{% url 'tag_list' tag.id tag.tag %}">{{ tag.tag }}</a>
                                 {% endfor %}
                             </div>
                         </div>

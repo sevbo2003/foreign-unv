@@ -101,13 +101,13 @@
                                 <h4 class="card-title">Kategoriyalar</h4>
                                 {% for cat in categories %}
                                     <a class="btn btn-light btn-sm mb-1"
-                                       href="page-category.html">{{ cat.category }}</a>
+                                       href="{% url 'cat_list' cat.id cat.category %}">{{ cat.category }}</a>
                                 {% endfor %}
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">Teglar</h4>
                                 {% for tag in tags %}
-                                    <a class="btn btn-light btn-sm mb-1" href="page-category.html">{{ tag.tag }}</a>
+                                    <a class="btn btn-light btn-sm mb-1" href="{% url 'tag_list' tag.id tag.tag %}">{{ tag.tag }}</a>
                                 {% endfor %}
                             </div>
                         </div>
