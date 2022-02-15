@@ -12,7 +12,7 @@
                         <a class="nav-link" href="{% url 'home' %}">Asosiy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="page-about.html">Batafsil</a>
+                        <a class="nav-link" href="{% url 'batafsil_malumot' %}">Batafsil</a>
                     </li>
 {#                    <li class="nav-item dropdown">#}
 {#                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"#}
@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse order-4 order-md-4" id="navbar-right">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="page-contact.html">Aloqa</a>
+                        <a class="nav-link" href="{% url 'aloqa' %}">Aloqa</a>
                     </li>
                 </ul>
                 <form class="form-inline" method="get" action="{% url 'home' %}">

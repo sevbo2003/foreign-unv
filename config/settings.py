@@ -62,6 +62,7 @@ TEMPLATES = [
                 'university.sidebar_processor.sponsors',
                 'university.sidebar_processor.categories',
                 'university.sidebar_processor.tags',
+                'marketing.email_processor.email'
             ],
         },
     },

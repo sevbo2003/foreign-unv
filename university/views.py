@@ -29,7 +29,6 @@ def university_list(request):
         form = EmailForm()
     context = {
         'univers': universities,
-        'form': form
     }
     return render(request, 'home.html', context)
 
@@ -53,11 +52,9 @@ def university_detail(request, slug):
             return redirect('detail', universitet.slug)
     else:
         comment_form = CommentForm()
-    form = EmailForm()
     context = {
         'univer': universitet,
         'comment_form': comment_form,
-        'form': form
     }
     return render(request, 'detail_page.html', context)
 
@@ -65,10 +62,8 @@ def university_detail(request, slug):
 def category_list(request, pk, category):
     category = get_object_or_404(Category, id=pk, category=category)
     univer_with_cat = University.objects.filter(category=category)
-    form = EmailForm()
     context = {
         'cats': univer_with_cat,
-        'form': form
     }
     return render(request, 'cats.html', context)
 
@@ -76,10 +71,8 @@ def category_list(request, pk, category):
 def tag_list(request, pk, tag):
     tag = get_object_or_404(Tags, id=pk, tag=tag)
     univer_with_tag = University.objects.filter(tags=tag)
-    form = EmailForm()
     context = {
         'tags_u': univer_with_tag,
-        'form': form
     }
     return render(request, 'tags.html', context)
 
